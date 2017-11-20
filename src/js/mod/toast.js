@@ -1,13 +1,16 @@
 import "../../less/toast.less";
 
 export class Toast {
-    constructor(msg, time) {
+    constructor() { }
+
+    render(msg, time) {
         this.msg = msg;
         this.dismissTime = time || 1000;
         this.createToast();
         this.showTosat();
+        return new Toast(msg, time)
     }
-
+    
     createToast() {
         const tpl = `<div class="toast">${this.msg}</div>`;
         this.$toast = $(tpl);
@@ -17,10 +20,10 @@ export class Toast {
     showTosat() {
         this.$toast.fadeIn(300, () => {
             setTimeout(() => {
-                this.$toast.fadeOut(300, ()=> {
+                this.$toast.fadeOut(300, () => {
                     this.$toast.remove()
                 })
-            },this.dismissTime)
+            }, this.dismissTime)
         })
     }
 }

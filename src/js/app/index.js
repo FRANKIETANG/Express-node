@@ -1,3 +1,5 @@
 import { Toast } from '../mod/toast.js'
 
-new Toast('hello world')
+let toast = new Toast()
+
+toast.render('hello')

@@ -72,8 +72,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mod_toast_js__ = __webpack_require__(1);
 
 
-new __WEBPACK_IMPORTED_MODULE_0__mod_toast_js__["a" /* Toast */]('hello world')
+let toast = new __WEBPACK_IMPORTED_MODULE_0__mod_toast_js__["a" /* Toast */]()
 
+toast.render('hello')
 
 /***/ }),
 /* 1 */
@@ -85,13 +86,16 @@ new __WEBPACK_IMPORTED_MODULE_0__mod_toast_js__["a" /* Toast */]('hello world')
 
 
 class Toast {
-    constructor(msg, time) {
+    constructor() { }
+
+    render(msg, time) {
         this.msg = msg;
         this.dismissTime = time || 1000;
         this.createToast();
         this.showTosat();
+        return new Toast(msg, time)
     }
-
+    
     createToast() {
         const tpl = `<div class="toast">${this.msg}</div>`;
         this.$toast = $(tpl);
@@ -101,10 +105,10 @@ class Toast {
     showTosat() {
         this.$toast.fadeIn(300, () => {
             setTimeout(() => {
-                this.$toast.fadeOut(300, ()=> {
+                this.$toast.fadeOut(300, () => {
                     this.$toast.remove()
                 })
-            },this.dismissTime)
+            }, this.dismissTime)
         })
     }
 }
@@ -172,7 +176,7 @@ exports = module.exports = __webpack_require__(6)(undefined);
 
 
 // module
-exports.push([module.i, ".toast {\n  position: fixed;\n  left: 50%;\n  transform: translateX(-50%);\n  bottom: 20px;\n  color: #992222;\n  background: #ffffff;\n  padding: 5px 10px;\n  border-radius: 3px;\n  box-shadow: 0px 0px 3px 1px rgba(255, 255, 255, 0.6);\n  box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.6);\n  display: none;\n}\n", ""]);
+exports.push([module.i, ".toast {\n  position: fixed;\n  left: 50%;\n  transform: translateX(-50%);\n  bottom: 20px;\n  color: #cc5d5d;\n  background: #ffffff;\n  padding: 5px 10px;\n  border-radius: 3px;\n  box-shadow: 0px 0px 3px 1px rgba(255, 255, 255, 0.6);\n  box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.6);\n  display: none;\n}\n", ""]);
 
 // exports
 
