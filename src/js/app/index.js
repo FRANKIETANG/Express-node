@@ -1,3 +1,3 @@
-var obj = require('../mod/b.js')
+import { Toast } from '../mod/toast.js'
 
-console.log(obj)
+new Toast('hello world')
