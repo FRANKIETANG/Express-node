@@ -1,20 +1,18 @@
-import "../../less/toast.less";
+import "../../less/toast.less"
 
 export class Toast {
-    constructor() { }
 
-    render(msg, time) {
-        this.msg = msg;
-        this.dismissTime = time || 1000;
-        this.createToast();
-        this.showTosat();
-        return new Toast(msg, time)
+    init(msg, time) {
+        this.msg = msg
+        this.dismissTime = time || 1000
+        this.createToast()
+        this.showTosat()
     }
-    
+
     createToast() {
-        const tpl = `<div class="toast">${this.msg}</div>`;
-        this.$toast = $(tpl);
-        $('body').append(this.$toast);
+        const tpl = `<div class="toast">${this.msg}</div>`
+        this.$toast = $(tpl)
+        $('body').append(this.$toast)
     }
 
     showTosat() {
@@ -26,4 +24,5 @@ export class Toast {
             }, this.dismissTime)
         })
     }
+
 }
