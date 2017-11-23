@@ -37,5 +37,5 @@ export class Event {
     off(event) {
         delete this.events[event]
     }
-    
+
 }

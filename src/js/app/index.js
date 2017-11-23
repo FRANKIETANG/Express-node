@@ -1,11 +1,25 @@
-import { Toast } from '../mod/toast.js'
 import { Waterfall } from '../mod/waterfall.js'
+import { Event } from '../mod/event'
+import { NoteManger } from '../mod/node-manger'
 
-import '../../less/note.less'
 import '../../less/index.less'
 
-let toast = new Toast()
 let waterfall = new Waterfall()
+let notemanger = new NoteManger()
+let event = new Event()
 
 waterfall.init($('#content'))
-toast.init('fffffffffffff')
+
+notemanger.load()
+
+$('add-note').on('click', function () {
+    notemanger.add()
+})
+
+event.on('waterfall', function () {
+    waterfall.render()
+})
+
+setInterval(() => {
+    event.fire('waterfall')
+}, 60000)
