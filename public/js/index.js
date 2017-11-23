@@ -741,6 +741,7 @@ class NoteManger {
                 })
                 event.fire('waterfall')
             } else {
+                // console.log('here')
                 toast.init(ret.errorMsg)
             }
         }).fail(() => {
