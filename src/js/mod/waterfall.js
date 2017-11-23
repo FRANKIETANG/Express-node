@@ -8,7 +8,6 @@ export class Waterfall {
         this.colSumHeight = []
         this.render()
         this.resize()
-        return new Waterfall(el)
     }
 
     render() {

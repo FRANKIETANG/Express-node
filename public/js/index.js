@@ -678,7 +678,6 @@ module.exports = __webpack_amd_options__;
         this.colSumHeight = []
         this.render()
         this.resize()
-        return new Waterfall(el)
     }
 
     render() {
