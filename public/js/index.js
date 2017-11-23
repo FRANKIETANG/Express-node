@@ -876,7 +876,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "html,\nbody {\n  margin: 0;\n  height: 100%;\n}\nul,\nli {\n  margin: 0;\n}\n", ""]);
+exports.push([module.i, "html,\nbody {\n  margin: 0;\n  height: 100%;\n}\nul,\nli {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\nbody {\n  background: url(https://www.transparenttextures.com/patterns/45-degree-fabric-dark.png) repeat top left;\n}\na {\n  text-decoration: none;\n  color: #b6b6b6;\n}\n#header {\n  height: 50px;\n  font-size: 1em;\n  background: #000000;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n#header a {\n  display: block;\n  font-size: 1em;\n}\n#header .fa {\n  margin: 0 2px;\n}\n#header .add-note,\n#header .user-area > li > .login {\n  display: block;\n  padding: 2px 4px;\n  background: #164c52;\n  border: 1px solid #cccccc;\n  border-radius: 4px;\n}\n#header .add-note {\n  margin-left: 16px;\n}\n#header .user-area {\n  margin-right: 16px;\n  display: flex;\n  justify-content: flex-end;\n  align-items: center;\n  height: 36px;\n  overflow: hidden;\n}\n#header .user-area li {\n  margin: 0 5px;\n  font-size: 1em;\n  color: #cccccc;\n  cursor: default;\n  user-select: none;\n}\n#header .user-area li img {\n  display: block;\n  box-sizing: border-box;\n  width: 30px;\n  height: 30px;\n  border-radius: 50%;\n  box-shadow: 0 0 3px 1px #807878;\n  overflow: hidden;\n}\n#header .user-area li .logout {\n  display: block;\n  padding: 2px 4px;\n  background: #37b5c5;\n  border: 1px solid #cccccc;\n  border-radius: 4px;\n}\n#content {\n  position: relative;\n  height: calc(70%);\n}\n", ""]);
 
 // exports
 

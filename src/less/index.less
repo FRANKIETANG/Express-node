@@ -5,4 +5,82 @@ html, body {
 
 ul, li {
     margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+body {
+    background: url(https://www.transparenttextures.com/patterns/45-degree-fabric-dark.png) repeat top left;
+}
+
+a {
+    text-decoration: none;
+    color: #b6b6b6;
+}
+
+#header {
+    height: 50px;
+    font-size: 1em;
+    background: #000000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    a {
+        display: block;
+        font-size: 1em;
+    }
+
+    .fa {
+        margin: 0 2px;
+    }
+
+    .add-note, .user-area > li > .login {
+        display: block;
+        padding: 2px 4px;
+        background: #164c52;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+    }
+
+    .add-note {
+        margin-left: 16px;
+    }
+
+    .user-area {
+        margin-right: 16px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        height: 36px;
+        overflow: hidden;
+        li {
+            margin: 0 5px;
+            font-size: 1em;
+            color: #cccccc;
+            cursor: default;
+            user-select: none;
+            img {
+                display: block;
+                box-sizing: border-box;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                box-shadow: 0 0 3px 1px #807878;
+                overflow: hidden;
+            }
+            .logout {
+                display: block;
+                padding: 2px 4px;
+                background: #37b5c5;
+                border: 1px solid #cccccc;
+                border-radius: 4px;                
+            }
+        }
+    }
+}
+
+#content {
+    position: relative;
+    height: calc(100% - 30px);
 }
