@@ -49,9 +49,9 @@ export class Note {
             </div>
         `
         this.$note = $(tpl)
-        this.$node.find('.note-ct').html(this.opts.context)
+        this.$note.find('.note-ct').html(this.opts.context)
         this.opts.$ct.append(this.$note)
-        if (!this.id) this.$node.animate({
+        if (!this.id) this.$note.animate({
             top: ((Math.random() + 1) * $(window).height()) * 0.3,
             left: ((Math.random() + 1) * $(window).height()) * 0.3,
         }, 100)
@@ -59,8 +59,8 @@ export class Note {
 
     setStyle() {
         let color = this.colors[Math.floor(Math.random() * 6)]
-        this.$note.find('note-head').css('background-color', color[0])
-        this.$note.find('note-ct').css('background-color', color[1])
+        this.$note.find('.note-head').css('background-color', color[0])
+        this.$note.find('.note-ct').css('background-color', color[1])
     }
 
     setLayout() {
@@ -98,9 +98,9 @@ export class Note {
         })
 
         $noteHead.on('mousedown', function (e) {
-            let evtX = e.pageX - $node.offset().left,
-                evtY = e.pageY - $node.offset().top
-            $node.addClass('draggable').data('evtPos', { x: evtX, y: evtY })
+            let evtX = e.pageX - $note.offset().left,
+                evtY = e.pageY - $note.offset().top
+            $note.addClass('draggable').data('evtPos', { x: evtX, y: evtY })
         }).on('mouseup', function () {
             $note.removeClass('draggable').removeData('pos')
         })

@@ -1,19 +1,19 @@
 import { Waterfall } from '../mod/waterfall.js'
 import { Event } from '../mod/event'
-import { NoteManger } from '../mod/node-manger'
+import { NoteManager } from '../mod/node-manager'
 
 import '../../less/index.less'
 
 let waterfall = new Waterfall()
-let notemanger = new NoteManger()
+let notemanager = new NoteManager()
 let event = new Event()
 
 waterfall.init($('#content'))
 
-notemanger.load()
+notemanager.load()
 
-$('add-note').on('click', function () {
-    notemanger.add()
+$('.add-note').on('click', function () {
+    notemanager.add()
 })
 
 event.on('waterfall', function () {

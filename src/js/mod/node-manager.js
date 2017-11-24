@@ -6,7 +6,7 @@ let note = new Note()
 let event = new Event()
 let toast = new Toast()
 
-export class NoteManger {
+export class NoteManager {
 
     load() {
         $.get('/').done(ret => {

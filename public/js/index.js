@@ -624,7 +624,7 @@ class Toast {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mod_waterfall_js__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mod_event__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mod_node_manger__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mod_node_manager__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__less_index_less__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__less_index_less___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__less_index_less__);
 
@@ -634,15 +634,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 let waterfall = new __WEBPACK_IMPORTED_MODULE_0__mod_waterfall_js__["a" /* Waterfall */]()
-let notemanger = new __WEBPACK_IMPORTED_MODULE_2__mod_node_manger__["a" /* NoteManger */]()
+let notemanager = new __WEBPACK_IMPORTED_MODULE_2__mod_node_manager__["a" /* NoteManager */]()
 let event = new __WEBPACK_IMPORTED_MODULE_1__mod_event__["a" /* Event */]()
 
 waterfall.init($('#content'))
 
-notemanger.load()
+notemanager.load()
 
-$('add-note').on('click', function () {
-    notemanger.add()
+$('.add-note').on('click', function () {
+    notemanager.add()
 })
 
 event.on('waterfall', function () {
@@ -728,7 +728,7 @@ let note = new __WEBPACK_IMPORTED_MODULE_1__note__["a" /* Note */]()
 let event = new __WEBPACK_IMPORTED_MODULE_2__event__["a" /* Event */]()
 let toast = new __WEBPACK_IMPORTED_MODULE_0__toast__["a" /* Toast */]()
 
-class NoteManger {
+class NoteManager {
 
     load() {
         $.get('/').done(ret => {
@@ -753,7 +753,7 @@ class NoteManger {
         note.init()
     }
 }
-/* harmony export (immutable) */ __webpack_exports__["a"] = NoteManger;
+/* harmony export (immutable) */ __webpack_exports__["a"] = NoteManager;
 
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
 
@@ -957,9 +957,9 @@ class Note {
             </div>
         `
         this.$note = $(tpl)
-        this.$node.find('.note-ct').html(this.opts.context)
+        this.$note.find('.note-ct').html(this.opts.context)
         this.opts.$ct.append(this.$note)
-        if (!this.id) this.$node.animate({
+        if (!this.id) this.$note.animate({
             top: ((Math.random() + 1) * $(window).height()) * 0.3,
             left: ((Math.random() + 1) * $(window).height()) * 0.3,
         }, 100)
@@ -967,8 +967,8 @@ class Note {
 
     setStyle() {
         let color = this.colors[Math.floor(Math.random() * 6)]
-        this.$note.find('note-head').css('background-color', color[0])
-        this.$note.find('note-ct').css('background-color', color[1])
+        this.$note.find('.note-head').css('background-color', color[0])
+        this.$note.find('.note-ct').css('background-color', color[1])
     }
 
     setLayout() {
@@ -1006,9 +1006,9 @@ class Note {
         })
 
         $noteHead.on('mousedown', function (e) {
-            let evtX = e.pageX - $node.offset().left,
-                evtY = e.pageY - $node.offset().top
-            $node.addClass('draggable').data('evtPos', { x: evtX, y: evtY })
+            let evtX = e.pageX - $note.offset().left,
+                evtY = e.pageY - $note.offset().top
+            $note.addClass('draggable').data('evtPos', { x: evtX, y: evtY })
         }).on('mouseup', function () {
             $note.removeClass('draggable').removeData('pos')
         })
