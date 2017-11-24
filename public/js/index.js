@@ -682,15 +682,15 @@ module.exports = __webpack_amd_options__;
 
     render() {
         this.$items = this.$el.children()
-        console.log(this.$items)
+        // console.log(this.$items)
         this.itemWidth = this.$items.outerWidth(true)
         this.colNum = parseInt($(window).width() / this.itemWidth)
-        console.log(this.colNum)
+        // console.log(this.colNum)
         for (let i = 0; i < this.colNum; i++) {
             this.colSumHeight[i] = 0
         }
         this.$items.each((i, e) => {
-            console.log(e)
+            // console.log(e)
             let minVal = Math.min.apply(null, this.colSumHeight)
             let minIndex = this.colSumHeight.indexOf(minVal)
             $(e).css({
@@ -1093,7 +1093,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, ".note {\n  position: absolute;\n  font-size: 1.2em;\n  font-weight: bolder;\n  color: rgba(66, 66, 66, 0.8);\n  width: 200px;\n  margin: 20px 10px;\n  transition: all 0.5s;\n}\n.note .note-head {\n  height: 20px;\n  background-color: #66741c;\n  cursor: move;\n}\n.note .note-head:hover .delete {\n  opacity: 1;\n}\n.note .note-head:before {\n  position: absolute;\n  left: 50%;\n  top: -11px;\n  margin-left: -32px;\n  content: ' ';\n  display: block;\n  width: 64px;\n  height: 18px;\n  background: #119663;\n}\n.note .note-head:after {\n  position: absolute;\n  left: 50%;\n  margin-left: 32px;\n  top: -11px;\n  z-index: -1;\n  content: '';\n  display: block;\n  width: 0;\n  height: 0;\n  border-left: 5px solid #119663;\n  border-top: 18px solid transparent;\n}\n.note .note-ct {\n  padding: 10px;\n  background-color: #eec12c;\n  outline: none;\n}\n.note .delete {\n  position: absolute;\n  top: 4px;\n  right: 4px;\n  font-size: 12px;\n  color: #fff;\n  cursor: pointer;\n  opacity: 0;\n  transition: opacity .3s;\n}\n.draggable {\n  opacity: 0.8;\n  cursor: move;\n  transform: none;\n}\n", ""]);
+exports.push([module.i, ".note {\n  position: absolute;\n  font-size: 1.2em;\n  font-weight: bolder;\n  color: rgba(66, 66, 66, 0.8);\n  width: 200px;\n  margin: 20px 10px;\n}\n.note .note-head {\n  height: 20px;\n  background-color: #66741c;\n  cursor: move;\n}\n.note .note-head:hover .delete {\n  opacity: 1;\n}\n.note .note-head:before {\n  position: absolute;\n  left: 50%;\n  top: -11px;\n  margin-left: -32px;\n  content: ' ';\n  display: block;\n  width: 64px;\n  height: 18px;\n  background: #119663;\n}\n.note .note-head:after {\n  position: absolute;\n  left: 50%;\n  margin-left: 32px;\n  top: -11px;\n  z-index: -1;\n  content: '';\n  display: block;\n  width: 0;\n  height: 0;\n  border-left: 5px solid #119663;\n  border-top: 18px solid transparent;\n}\n.note .note-ct {\n  padding: 10px;\n  background-color: #eec12c;\n  outline: none;\n}\n.note .delete {\n  position: absolute;\n  top: 4px;\n  right: 4px;\n  font-size: 12px;\n  color: #fff;\n  cursor: pointer;\n  opacity: 0;\n  transition: opacity .3s;\n}\n.draggable {\n  opacity: 0.8;\n  cursor: move;\n  transform: none;\n}\n", ""]);
 
 // exports
 
