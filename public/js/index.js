@@ -734,7 +734,7 @@ class NoteManager {
             if (ret.status === 0) {
                 console.log(ret.data)
                 $.each(ret.data, (idx, article) => {
-                    note.init({
+                    new __WEBPACK_IMPORTED_MODULE_1__note__["a" /* Note */]().init({
                         id: article.id,
                         context: article.text
                     })
@@ -750,7 +750,8 @@ class NoteManager {
     }
 
     add() {
-        note.init()
+        debugger
+        new __WEBPACK_IMPORTED_MODULE_1__note__["a" /* Note */]().init()
     }
 }
 /* harmony export (immutable) */ __webpack_exports__["a"] = NoteManager;
@@ -778,8 +779,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../node_modules/_less-loader@4.0.5@less-loader/dist/cjs.js!./toast.less", function() {
-			var newContent = require("!!../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../node_modules/_less-loader@4.0.5@less-loader/dist/cjs.js!./toast.less");
+		module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/less-loader/dist/cjs.js!./toast.less", function() {
+			var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/less-loader/dist/cjs.js!./toast.less");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -924,7 +925,7 @@ class Note {
             ['#3f78c3', '#5591d2']
         ]
 
-        this.defaultOps = {
+        this.defaultOpts = {
             id: '',
             $ct: $('#content').length > 0 ? $('#content') : $('body'),
             context: 'input here'
@@ -941,7 +942,8 @@ class Note {
     }
 
     initOpts(opts) {
-        this.opts = $.extend({}, this.defaultOps, opts || {})
+        this.opts = $.extend({}, this.defaultOpts, opts || {})
+        console.log(opts)
         if (this.opts.id) {
             this.id = this.opts.id;
         }
@@ -994,6 +996,7 @@ class Note {
             if ($noteCt.html() == 'input here') $noteCt.html('')
             $noteCt.data('before', $noteCt.html())
         }).on('blur paste', () => {
+            debugger
             if ($noteCt.data('before') !== $noteCt.html()) {
                 $noteCt.data('before', $noteCt.html())
                 this.setLayout()
@@ -1035,7 +1038,7 @@ class Note {
         })
     }
 
-    edit() {
+    edit(msg) {
         $.post('/api/note/edit', {
             id: this.id,
             note: msg
@@ -1087,8 +1090,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../node_modules/_less-loader@4.0.5@less-loader/dist/cjs.js!./note.less", function() {
-			var newContent = require("!!../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../node_modules/_less-loader@4.0.5@less-loader/dist/cjs.js!./note.less");
+		module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/less-loader/dist/cjs.js!./note.less", function() {
+			var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/less-loader/dist/cjs.js!./note.less");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -1132,8 +1135,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../node_modules/_less-loader@4.0.5@less-loader/dist/cjs.js!./index.less", function() {
-			var newContent = require("!!../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../node_modules/_less-loader@4.0.5@less-loader/dist/cjs.js!./index.less");
+		module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/less-loader/dist/cjs.js!./index.less", function() {
+			var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/less-loader/dist/cjs.js!./index.less");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});

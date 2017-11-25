@@ -1,9 +1,10 @@
+const path = require('path')
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize(undefined, undefined, undefined, {
     host: 'localhost',
     dialect: 'sqlite',
     // 仅限 SQLite
-    storage: '../database/database.sqlite',
+    storage: path.join(__dirname, '../database/database.sqlite')
 
 });
 
@@ -42,3 +43,5 @@ const Note = sequelize.define('note', {
 // Note.findAll({ raw: true, where: { id: 1 } }).then(notes => {
 //     console.log(notes)
 // })
+
+module.exports.Note = Note;

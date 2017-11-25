@@ -13,7 +13,7 @@ export class NoteManager {
             if (ret.status === 0) {
                 console.log(ret.data)
                 $.each(ret.data, (idx, article) => {
-                    note.init({
+                    new Note().init({
                         id: article.id,
                         context: article.text
                     })
@@ -29,6 +29,7 @@ export class NoteManager {
     }
 
     add() {
-        note.init()
+        debugger
+        new Note().init()
     }
 }

@@ -16,7 +16,7 @@ export class Note {
             ['#3f78c3', '#5591d2']
         ]
 
-        this.defaultOps = {
+        this.defaultOpts = {
             id: '',
             $ct: $('#content').length > 0 ? $('#content') : $('body'),
             context: 'input here'
@@ -33,7 +33,8 @@ export class Note {
     }
 
     initOpts(opts) {
-        this.opts = $.extend({}, this.defaultOps, opts || {})
+        this.opts = $.extend({}, this.defaultOpts, opts || {})
+        console.log(opts)
         if (this.opts.id) {
             this.id = this.opts.id;
         }
@@ -86,6 +87,7 @@ export class Note {
             if ($noteCt.html() == 'input here') $noteCt.html('')
             $noteCt.data('before', $noteCt.html())
         }).on('blur paste', () => {
+            debugger
             if ($noteCt.data('before') !== $noteCt.html()) {
                 $noteCt.data('before', $noteCt.html())
                 this.setLayout()
@@ -127,7 +129,7 @@ export class Note {
         })
     }
 
-    edit() {
+    edit(msg) {
         $.post('/api/note/edit', {
             id: this.id,
             note: msg
