@@ -87,7 +87,6 @@ export class Note {
             if ($noteCt.html() == 'input here') $noteCt.html('')
             $noteCt.data('before', $noteCt.html())
         }).on('blur paste', () => {
-            debugger
             if ($noteCt.data('before') !== $noteCt.html()) {
                 $noteCt.data('before', $noteCt.html())
                 this.setLayout()

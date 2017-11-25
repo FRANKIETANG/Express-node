@@ -29,7 +29,6 @@ export class NoteManager {
     }
 
     add() {
-        debugger
         new Note().init()
     }
 }

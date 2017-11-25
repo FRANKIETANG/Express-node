@@ -30,10 +30,13 @@ router.post('/note/add', function (req, res, next) {
   }).catch(() => {
     res.send({ status: 1, errorMsg: '数据库出错' })
   })
-  console.log('/note/add', note)
+  // console.log('/note/add', note)
 })
 
 router.post('/note/edit', function (req, res, next) {
+  Note.update({ text: req.body.note }, { where: { id: req.body.id } }).then(() => {
+    res.send({ status: 0 })
+  })
   console.log('/note/edit')
 })
 

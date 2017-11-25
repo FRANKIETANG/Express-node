@@ -750,7 +750,6 @@ class NoteManager {
     }
 
     add() {
-        debugger
         new __WEBPACK_IMPORTED_MODULE_1__note__["a" /* Note */]().init()
     }
 }
@@ -996,7 +995,6 @@ class Note {
             if ($noteCt.html() == 'input here') $noteCt.html('')
             $noteCt.data('before', $noteCt.html())
         }).on('blur paste', () => {
-            debugger
             if ($noteCt.data('before') !== $noteCt.html()) {
                 $noteCt.data('before', $noteCt.html())
                 this.setLayout()
