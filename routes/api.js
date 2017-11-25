@@ -37,10 +37,13 @@ router.post('/note/edit', function (req, res, next) {
   Note.update({ text: req.body.note }, { where: { id: req.body.id } }).then(() => {
     res.send({ status: 0 })
   })
-  console.log('/note/edit')
+  //console.log('/note/edit')
 })
 
 router.post('/note/delete', function (req, res, next) {
+  Note.destroy({ where: { id: req.body.id } }).then(() => {
+    res.send({ status: 0 })
+  })
   console.log('/note/delete')
 })
 
