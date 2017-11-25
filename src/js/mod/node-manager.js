@@ -9,12 +9,13 @@ let toast = new Toast()
 export class NoteManager {
 
     load() {
-        $.get('/').done(ret => {
+        $.get('/api/notes').done(ret => {
             if (ret.status === 0) {
+                console.log(ret.data)
                 $.each(ret.data, (idx, article) => {
                     note.init({
                         id: article.id,
-                        content: article.text
+                        context: article.text
                     })
                 })
                 event.fire('waterfall')

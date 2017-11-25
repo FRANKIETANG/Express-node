@@ -1,41 +1,40 @@
+const onceEvent = {};
+const events = {};
+
 export class Event {
-    constructor() {
-        this.onceEvent = {}
-        this.events = {}
-    }
 
     on(event, fn) {
-        if (this.events[event]) {
-            this.events[event].push(fn)
+        if (events[event]) {
+            events[event].push(fn)
         } else {
-            this.events[event] = [fn]
+            events[event] = [fn]
         }
     }
 
     once(event, fn) {
-        if (this.onceEvent[event]) {
-            this.onceEvent[event].push(fn)
+        if (onceEvent[event]) {
+            onceEvent[event].push(fn)
         } else {
-            this.onceEvent[event] = [fn]
+            onceEvent[event] = [fn]
         }
     }
 
     fire(event) {
-        if (this.events[event]) {
-            this.events[event].forEach((fn) => {
+        if (events[event]) {
+            events[event].forEach((fn) => {
                 fn()
             })
         }
-        if (this.onceEvent[event]) {
-            this.onceEvent[event].forEach((fn) => {
+        if (onceEvent[event]) {
+            onceEvent[event].forEach((fn) => {
                 fn()
             })
-            this.onceEvent[event] = []
+            onceEvent[event] = []
         }
     }
 
     off(event) {
-        delete this.events[event]
+        delete events[event]
     }
 
 }

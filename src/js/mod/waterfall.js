@@ -1,5 +1,5 @@
 export class Waterfall {
-
+    
     init(el) {
         this.$el = el
         this.$items = null

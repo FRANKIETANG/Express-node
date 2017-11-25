@@ -114,7 +114,7 @@ export class Note {
     }
 
     add(msg) {
-        $.post('/', {
+        $.post('/api/note/add', {
             note: msg
         }).done((ret) => {
             if (ret.status === 0) {
@@ -127,8 +127,21 @@ export class Note {
         })
     }
 
+    edit() {
+        $.post('/api/note/edit', {
+            id: this.id,
+            note: msg
+        }).done((ret) => {
+            if (ret.status === 0) {
+                toast.init('update success')
+            } else {
+                toast.init(ret.errorMsg)
+            }
+        })
+    }
+
     delete() {
-        $.post('/', {
+        $.post('/api/note/delete', {
             id: this.id
         }).done((ret) => {
             if (ret.status === 0) {
@@ -139,5 +152,5 @@ export class Note {
                 toast.init(ret.errorMsg)
             }
         })
-    }
+    }   
 }

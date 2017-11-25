@@ -79,44 +79,43 @@ null==d?void 0:d))},attrHooks:{type:{set:function(a,b){if(!o.radioValue&&"radio"
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+const onceEvent = {};
+const events = {};
+
 class Event {
-    constructor() {
-        this.onceEvent = {}
-        this.events = {}
-    }
 
     on(event, fn) {
-        if (this.events[event]) {
-            this.events[event].push(fn)
+        if (events[event]) {
+            events[event].push(fn)
         } else {
-            this.events[event] = [fn]
+            events[event] = [fn]
         }
     }
 
     once(event, fn) {
-        if (this.onceEvent[event]) {
-            this.onceEvent[event].push(fn)
+        if (onceEvent[event]) {
+            onceEvent[event].push(fn)
         } else {
-            this.onceEvent[event] = [fn]
+            onceEvent[event] = [fn]
         }
     }
 
     fire(event) {
-        if (this.events[event]) {
-            this.events[event].forEach((fn) => {
+        if (events[event]) {
+            events[event].forEach((fn) => {
                 fn()
             })
         }
-        if (this.onceEvent[event]) {
-            this.onceEvent[event].forEach((fn) => {
+        if (onceEvent[event]) {
+            onceEvent[event].forEach((fn) => {
                 fn()
             })
-            this.onceEvent[event] = []
+            onceEvent[event] = []
         }
     }
 
     off(event) {
-        delete this.events[event]
+        delete events[event]
     }
 
 }
@@ -669,7 +668,7 @@ module.exports = __webpack_amd_options__;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function($) {class Waterfall {
-
+    
     init(el) {
         this.$el = el
         this.$items = null
@@ -731,12 +730,13 @@ let toast = new __WEBPACK_IMPORTED_MODULE_0__toast__["a" /* Toast */]()
 class NoteManager {
 
     load() {
-        $.get('/').done(ret => {
+        $.get('/api/notes').done(ret => {
             if (ret.status === 0) {
+                console.log(ret.data)
                 $.each(ret.data, (idx, article) => {
                     note.init({
                         id: article.id,
-                        content: article.text
+                        context: article.text
                     })
                 })
                 event.fire('waterfall')
@@ -1022,7 +1022,7 @@ class Note {
     }
 
     add(msg) {
-        $.post('/', {
+        $.post('/api/note/add', {
             note: msg
         }).done((ret) => {
             if (ret.status === 0) {
@@ -1035,8 +1035,21 @@ class Note {
         })
     }
 
+    edit() {
+        $.post('/api/note/edit', {
+            id: this.id,
+            note: msg
+        }).done((ret) => {
+            if (ret.status === 0) {
+                toast.init('update success')
+            } else {
+                toast.init(ret.errorMsg)
+            }
+        })
+    }
+
     delete() {
-        $.post('/', {
+        $.post('/api/note/delete', {
             id: this.id
         }).done((ret) => {
             if (ret.status === 0) {
@@ -1047,7 +1060,7 @@ class Note {
                 toast.init(ret.errorMsg)
             }
         })
-    }
+    }   
 }
 /* harmony export (immutable) */ __webpack_exports__["a"] = Note;
 
