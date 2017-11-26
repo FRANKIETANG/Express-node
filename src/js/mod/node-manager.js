@@ -7,7 +7,7 @@ export class NoteManager {
     load() {
         $.get('/api/notes').done(ret => {
             if (ret.status == 0) {
-                console.log(ret.data)
+                // console.log(ret.data)
                 $.each(ret.data, (idx, article) => {
                     new Note().init({
                         id: article.id,

@@ -1,7 +1,6 @@
 const path = require('path')
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize(undefined, undefined, undefined, {
-    host: 'localhost',
     dialect: 'sqlite',
     // 仅限 SQLite
     storage: path.join(__dirname, '../database/database.sqlite')

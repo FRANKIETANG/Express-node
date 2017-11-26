@@ -726,7 +726,7 @@ class NoteManager {
     load() {
         $.get('/api/notes').done(ret => {
             if (ret.status == 0) {
-                console.log(ret.data)
+                // console.log(ret.data)
                 $.each(ret.data, (idx, article) => {
                     new __WEBPACK_IMPORTED_MODULE_1__note__["a" /* Note */]().init({
                         id: article.id,
@@ -933,7 +933,7 @@ class Note {
 
     initOpts(opts) {
         this.opts = $.extend({}, this.defaultOpts, opts || {})
-        console.log(opts)
+        // console.log(opts)
         if (this.opts.id) {
             this.id = this.opts.id;
         }

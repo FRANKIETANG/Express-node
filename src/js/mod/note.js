@@ -31,7 +31,7 @@ export class Note {
 
     initOpts(opts) {
         this.opts = $.extend({}, this.defaultOpts, opts || {})
-        console.log(opts)
+        // console.log(opts)
         if (this.opts.id) {
             this.id = this.opts.id;
         }

@@ -70,7 +70,7 @@ router.post('/note/delete', function (req, res, next) {
   Note.destroy({ where: { id: noteId, uid: uid } }).then(() => {
     res.send({ status: 0 })
   })
-  console.log('/note/delete')
+  // console.log('/note/delete')
 })
 
 module.exports = router;
