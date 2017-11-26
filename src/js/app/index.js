@@ -5,21 +5,19 @@ import { NoteManager } from '../mod/node-manager'
 import '../../less/index.less'
 
 let waterfall = new Waterfall()
-let notemanager = new NoteManager()
-let event = new Event()
 
 waterfall.init($('#content'))
 
-notemanager.load()
+new NoteManager().load()
 
 $('.add-note').on('click', function () {
-    notemanager.add()
+    new NoteManager().add()
 })
 
-event.on('waterfall', function () {
+new Event().on('waterfall', function () {
     waterfall.render()
 })
 
 setInterval(() => {
-    event.fire('waterfall')
+    new Event().fire('waterfall')
 }, 60000)

@@ -20,8 +20,13 @@ const sequelize = new Sequelize(undefined, undefined, undefined, {
 const Note = sequelize.define('note', {
     text: {
         type: Sequelize.STRING
+    },
+    uid: {
+        type: Sequelize.STRING
     }
 });
+
+Note.sync()
 
 // force: true 如果表已经存在，将会丢弃表
 // Note.sync(/*{ force: true }*/).then(() => {

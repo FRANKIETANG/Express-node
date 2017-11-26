@@ -2,9 +2,6 @@ import '../../less/note.less'
 import { Toast } from './toast'
 import { Event } from './event'
 
-let toast = new Toast()
-let event = new Event()
-
 export class Note {
     constructor() {
         this.colors = [
@@ -69,7 +66,7 @@ export class Note {
             clearTimeout(this.timer)
         }
         this.timer = setTimeout(() => {
-            event.fire('waterfall')
+            new Event().fire('waterfall')
         }, 100)
     }
 
@@ -119,11 +116,11 @@ export class Note {
             note: msg
         }).done((ret) => {
             if (ret.status === 0) {
-                toast.init('add success')
+                new Toast().init('add success')
             } else {
                 this.$note.remove()
-                event.fire('waterfall')
-                toast.init(ret.errorMsg)
+                new Event().fire('waterfall')
+                new Toast().init(ret.errorMsg)
             }
         })
     }
@@ -134,9 +131,9 @@ export class Note {
             note: msg
         }).done((ret) => {
             if (ret.status === 0) {
-                toast.init('update success')
+                new Toast().init('update success')
             } else {
-                toast.init(ret.errorMsg)
+                new Toast().init(ret.errorMsg)
             }
         })
     }
@@ -146,11 +143,11 @@ export class Note {
             id: this.id
         }).done((ret) => {
             if (ret.status === 0) {
-                toast.init('delete success')
+                new Toast().init('delete success')
                 this.$note.remove()
-                event.fire('waterfall')
+                new Event().fire('waterfall')
             } else {
-                toast.init(ret.errorMsg)
+                new Toast().init(ret.errorMsg)
             }
         })
     }   

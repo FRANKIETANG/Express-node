@@ -633,23 +633,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 let waterfall = new __WEBPACK_IMPORTED_MODULE_0__mod_waterfall_js__["a" /* Waterfall */]()
-let notemanager = new __WEBPACK_IMPORTED_MODULE_2__mod_node_manager__["a" /* NoteManager */]()
-let event = new __WEBPACK_IMPORTED_MODULE_1__mod_event__["a" /* Event */]()
 
 waterfall.init($('#content'))
 
-notemanager.load()
+new __WEBPACK_IMPORTED_MODULE_2__mod_node_manager__["a" /* NoteManager */]().load()
 
 $('.add-note').on('click', function () {
-    notemanager.add()
+    new __WEBPACK_IMPORTED_MODULE_2__mod_node_manager__["a" /* NoteManager */]().add()
 })
 
-event.on('waterfall', function () {
+new __WEBPACK_IMPORTED_MODULE_1__mod_event__["a" /* Event */]().on('waterfall', function () {
     waterfall.render()
 })
 
 setInterval(() => {
-    event.fire('waterfall')
+    new __WEBPACK_IMPORTED_MODULE_1__mod_event__["a" /* Event */]().fire('waterfall')
 }, 60000)
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
 
@@ -723,15 +721,11 @@ module.exports = __webpack_amd_options__;
 
 
 
-let note = new __WEBPACK_IMPORTED_MODULE_1__note__["a" /* Note */]()
-let event = new __WEBPACK_IMPORTED_MODULE_2__event__["a" /* Event */]()
-let toast = new __WEBPACK_IMPORTED_MODULE_0__toast__["a" /* Toast */]()
-
 class NoteManager {
 
     load() {
         $.get('/api/notes').done(ret => {
-            if (ret.status === 0) {
+            if (ret.status == 0) {
                 console.log(ret.data)
                 $.each(ret.data, (idx, article) => {
                     new __WEBPACK_IMPORTED_MODULE_1__note__["a" /* Note */]().init({
@@ -739,13 +733,13 @@ class NoteManager {
                         context: article.text
                     })
                 })
-                event.fire('waterfall')
+                new __WEBPACK_IMPORTED_MODULE_2__event__["a" /* Event */]().fire('waterfall')
             } else {
                 // console.log('here')
-                toast.init(ret.errorMsg)
+                new __WEBPACK_IMPORTED_MODULE_0__toast__["a" /* Toast */]().init(ret.errorMsg)
             }
         }).fail(() => {
-            toast.init('网络异常')
+            new __WEBPACK_IMPORTED_MODULE_0__toast__["a" /* Toast */]().init('网络异常')
         })
     }
 
@@ -778,8 +772,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/less-loader/dist/cjs.js!./toast.less", function() {
-			var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/less-loader/dist/cjs.js!./toast.less");
+		module.hot.accept("!!../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../node_modules/_less-loader@4.0.5@less-loader/dist/cjs.js!./toast.less", function() {
+			var newContent = require("!!../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../node_modules/_less-loader@4.0.5@less-loader/dist/cjs.js!./toast.less");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -910,9 +904,6 @@ module.exports = function (css) {
 
 
 
-let toast = new __WEBPACK_IMPORTED_MODULE_1__toast__["a" /* Toast */]()
-let event = new __WEBPACK_IMPORTED_MODULE_2__event__["a" /* Event */]()
-
 class Note {
     constructor() {
         this.colors = [
@@ -977,7 +968,7 @@ class Note {
             clearTimeout(this.timer)
         }
         this.timer = setTimeout(() => {
-            event.fire('waterfall')
+            new __WEBPACK_IMPORTED_MODULE_2__event__["a" /* Event */]().fire('waterfall')
         }, 100)
     }
 
@@ -1027,11 +1018,11 @@ class Note {
             note: msg
         }).done((ret) => {
             if (ret.status === 0) {
-                toast.init('add success')
+                new __WEBPACK_IMPORTED_MODULE_1__toast__["a" /* Toast */]().init('add success')
             } else {
                 this.$note.remove()
-                event.fire('waterfall')
-                toast.init(ret.errorMsg)
+                new __WEBPACK_IMPORTED_MODULE_2__event__["a" /* Event */]().fire('waterfall')
+                new __WEBPACK_IMPORTED_MODULE_1__toast__["a" /* Toast */]().init(ret.errorMsg)
             }
         })
     }
@@ -1042,9 +1033,9 @@ class Note {
             note: msg
         }).done((ret) => {
             if (ret.status === 0) {
-                toast.init('update success')
+                new __WEBPACK_IMPORTED_MODULE_1__toast__["a" /* Toast */]().init('update success')
             } else {
-                toast.init(ret.errorMsg)
+                new __WEBPACK_IMPORTED_MODULE_1__toast__["a" /* Toast */]().init(ret.errorMsg)
             }
         })
     }
@@ -1054,11 +1045,11 @@ class Note {
             id: this.id
         }).done((ret) => {
             if (ret.status === 0) {
-                toast.init('delete success')
+                new __WEBPACK_IMPORTED_MODULE_1__toast__["a" /* Toast */]().init('delete success')
                 this.$note.remove()
-                event.fire('waterfall')
+                new __WEBPACK_IMPORTED_MODULE_2__event__["a" /* Event */]().fire('waterfall')
             } else {
-                toast.init(ret.errorMsg)
+                new __WEBPACK_IMPORTED_MODULE_1__toast__["a" /* Toast */]().init(ret.errorMsg)
             }
         })
     }   
@@ -1088,8 +1079,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/less-loader/dist/cjs.js!./note.less", function() {
-			var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/less-loader/dist/cjs.js!./note.less");
+		module.hot.accept("!!../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../node_modules/_less-loader@4.0.5@less-loader/dist/cjs.js!./note.less", function() {
+			var newContent = require("!!../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../node_modules/_less-loader@4.0.5@less-loader/dist/cjs.js!./note.less");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -1133,8 +1124,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/less-loader/dist/cjs.js!./index.less", function() {
-			var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/less-loader/dist/cjs.js!./index.less");
+		module.hot.accept("!!../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../node_modules/_less-loader@4.0.5@less-loader/dist/cjs.js!./index.less", function() {
+			var newContent = require("!!../../node_modules/_css-loader@0.28.7@css-loader/index.js!../../node_modules/_less-loader@4.0.5@less-loader/dist/cjs.js!./index.less");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
