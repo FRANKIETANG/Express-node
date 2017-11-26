@@ -20,7 +20,7 @@ passport.deserializeUser((obj, done) => {
 passport.use(new GitHubStrategy({
     clientID: 'd4c89c6ad286cdb9be1d',
     clientSecret: '647d44f73eec4f98eba420abcc84c8c4a9d41263',
-    callbackURL: "http://localhost:3000/auth/github/callback"
+    callbackURL: "https://express-node.now.sh/auth/github/callback"
 }, function (accessToken, refreshToken, profile, done) {
     // User.findOrCreate({ githubId: profile.id }, function (err, user) {
     //     return cb(err, user);
